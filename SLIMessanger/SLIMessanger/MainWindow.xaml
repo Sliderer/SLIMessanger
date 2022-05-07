@@ -1,0 +1,414 @@
+﻿<Window x:Class="SLIMessanger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SLIMessanger"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" FontFamily="Rubik Puddles">
+
+
+
+    <Window.Resources>
+
+
+        <Style x:Key="LogInRegistrationButton">
+            <Setter Property="Control.Background" Value="#1E90FF" />
+            <Setter Property="Button.FontSize" Value="23"/>
+            <Setter Property="Button.Foreground" Value="#191970"/>
+            <Setter Property="Button.FontWeight" Value="Bold"/>
+            <Setter Property="Button.FontFamily" Value="Agency FB"/>
+            <Setter Property="Button.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15"
+                                Background="{TemplateBinding Background}"
+                                >
+
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Button.Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="15"
+                              Direction="300"
+                              Color="#708090"
+                              RenderingBias="Quality"
+                              ShadowDepth="1"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SendMessageButton">
+            <Setter Property="Control.Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="c:\users\a6271\source\repos\slimessanger\slimessanger\images\sendmessageimage.webp
+"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Button.Foreground" Value="#191970"/>
+            <Setter Property="Button.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="25"
+                                Background="{TemplateBinding Background}"
+                                >
+
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="UsersText">
+            <Setter Property="TextBox.Foreground" Value="#E6E6FA"/>
+        </Style>
+
+        <Style x:Key="DecorationGrid">
+            <Setter Property="ItemsControl.Background" Value="#DDA0DD"/>
+
+        </Style>
+
+        <Style x:Key="ChatTextBox">
+            <Setter Property="TextBox.HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="TextBox.Padding" Value="10,10,10,10"/>
+            <Setter Property="TextBox.VerticalContentAlignment" Value="Center"/>
+            <Setter Property="TextBox.FontWeight" Value="Bold"/>
+            <Setter Property="TextBox.FontSize" Value="16"/>
+            <Setter Property="TextBox.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border CornerRadius="20"
+                                Background="{TemplateBinding Background}"
+                                >
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"/>
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DataTextBox">
+            <Setter Property="TextBox.HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="TextBox.VerticalContentAlignment" Value="Center"/>
+            <Setter Property="TextBox.FontWeight" Value="Bold"/>
+            <Setter Property="TextBox.FontSize" Value="20"/>
+            <Setter Property="TextBox.FontFamily" Value="Agency FB"/>
+            <Setter Property="TextBox.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border CornerRadius="20"
+                                Background="#00BFFF"
+                                >
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"/>
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <EventSetter Event="TextBox.PreviewKeyDown" Handler="DataTextBox_PreviewKeyDown"/>
+
+            <Setter Property="TextBox.Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="15"
+                              Direction="300"
+                              Color="#708090"
+                              RenderingBias="Quality"
+                              ShadowDepth="1"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#191970"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Agency FB"/>
+        </Style>
+
+        <Style x:Key="DefaultGrid">
+            <Setter Property="Grid.Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="C:\Users\a6271\source\repos\SLIMessanger\SLIMessanger\Images\BackgroundGridImage.jpg"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+
+        <Grid Grid.Row="1">
+
+            <Grid Name="LogInGrid"
+              Style="{StaticResource DefaultGrid}"
+              Visibility="Hidden">
+
+                <TextBlock 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Margin="0,50,0,0"
+                       FontSize="30"
+                       Text="Login"  >
+                </TextBlock>
+
+                <TextBlock Text="Password"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Margin="0,150,0,0"
+                       FontSize="30"></TextBlock>
+
+                <TextBox HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     Height="41" Width="216"
+                     Margin="0,100,0,0"
+                     Name="loginTextLogIn"
+                     Style="{StaticResource DataTextBox}">
+                </TextBox>
+
+                <TextBox HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     Height="41" Width="216"
+                     Margin="0,200,0,0"
+                     Name="passwordTextLogIn"
+                     Style="{StaticResource DataTextBox}">
+                </TextBox>
+
+                <Button HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Width="200"
+                    Height="50"
+                    Margin="0,285,0,0"
+                    Content="Log in"
+                    Name ="LogInButton"
+                    Click="LogInButton_Click"
+                    Style="{StaticResource LogInRegistrationButton}">
+
+                </Button>
+
+                <Button HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Height="50"
+                    Margin="0,365,0,0"
+                    Content="Registrate"
+                    Name ="SwitchButtonLogIn" 
+                    Click="SwitchButtonLogIn_Click"
+                    Style="{StaticResource LogInRegistrationButton}">
+
+                </Button>
+            </Grid>
+
+            <Grid Name="RegistrationGrid"
+              Style="{StaticResource DefaultGrid}"
+              Visibility="Hidden" >
+                <Grid>
+
+                    <TextBlock 
+                        Text="Name"
+                       FontSize="25"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="190,30,0,0"
+                       >
+
+                    </TextBlock>
+
+
+                    <TextBlock Text="Surname"
+                       FontSize="25"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="190,80,0,0">
+
+                    </TextBlock>
+                    <TextBlock Text="Email"
+                       FontSize="25"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="190,130,0,0">
+
+                    </TextBlock>
+                    <TextBlock Text="Login"
+                       FontSize="25"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="190,180,0,0">
+
+                    </TextBlock>
+                    <TextBlock Text="Password"
+                       FontSize="25"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="190,230,0,0"
+                       >
+
+                    </TextBlock>
+                </Grid>
+
+
+                <TextBox HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     Height="41" Width="216"
+                     Margin="0,25,0,0"
+                     Name="nameTextRegistration"
+                     Style="{StaticResource DataTextBox}">
+                </TextBox>
+
+                <TextBox HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     Height="41" Width="216"
+                     Margin="0,75,0,0"
+                     Name="surnameTextRegistration"
+                     Style="{StaticResource DataTextBox}">
+                </TextBox>
+
+                <TextBox HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     Height="41" Width="216"
+                     Margin="0,125,0,0"
+                     Name="emailTextRegistration"
+                     Style="{StaticResource DataTextBox}">
+                </TextBox>
+
+                <TextBox HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     Height="41" Width="216"
+                     Margin="0,175,0,0"
+                     Name="loginTextRegistration"
+                     Style="{StaticResource DataTextBox}">
+                </TextBox>
+
+                <TextBox HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     Height="41" Width="216"
+                     Margin="0,225,0,25"
+                     Name="passwordTextRegistration"
+                     Style="{StaticResource DataTextBox}">
+                </TextBox>
+
+                <Button HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Width="200"
+                    Height="50"
+                    Margin="0,285,0,0"
+                    Content="Registrate"
+                    FontSize="20"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Name ="RegistrationButton"
+                    Click="RegistrationButton_Click"
+                    Style="{StaticResource LogInRegistrationButton}">
+
+                </Button>
+
+                <Button HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Height="50"
+                    Margin="0,365,0,0"
+                    Content="Log in"
+                    FontSize="20"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Name ="SwitchButtonRegistration" Click="SwitchButtonRegistration_Click"
+                    Style="{StaticResource LogInRegistrationButton}">
+
+                </Button>
+            </Grid>
+
+            <Grid Name="MainMessangerGrid"
+              Visibility="Visible"
+              Background="#B0E0E6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0"
+                  Background="#B0E0E6">
+
+                    <ScrollViewer>
+                        <Grid  Name="UsersScrollViewer">
+
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid Name="ChatGrid"
+                  Grid.Column="1"
+                 Background="#B0E0E6" >
+                    <ScrollViewer Margin="0,0,0,56">
+                        <Grid Name="ChatScrollView">
+
+
+                        </Grid>
+                    </ScrollViewer>
+                    <TextBox 
+                    Style="{StaticResource ChatTextBox}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Width="520" Height="50"
+                    Name="MessageText"
+                    TextWrapping="Wrap"
+                    TextChanged="MessageText_TextChanged"
+                    PreviewKeyDown="MessageText_PreviewKeyDown">
+                    
+                    </TextBox>
+                    <Button 
+                        Style="{StaticResource SendMessageButton}"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,5,0"
+                        Width="50"
+                        Height="50"
+                        Name="SendImage"
+                        Click="SendImage_Click"/>
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" 
+                  Background="LightGray"
+                  MouseDown="Grid_MouseDown"/>
+            <Grid Grid.Column="1" Background="LightGreen"/>
+            <Grid Grid.Column="2" Background="LightYellow"/>
+            <Grid Grid.Column="3" Background="LightPink" MouseDown="CloseApp"/>
+        </Grid>
+
+
+
+    </Grid>
+</Window>
