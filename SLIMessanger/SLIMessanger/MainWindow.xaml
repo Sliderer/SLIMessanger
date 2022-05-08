@@ -48,12 +48,6 @@
         </Style>
 
         <Style x:Key="SendMessageButton">
-            <Setter Property="Control.Background">
-                <Setter.Value>
-                    <ImageBrush ImageSource="c:\users\a6271\source\repos\slimessanger\slimessanger\images\sendmessageimage.webp
-"/>
-                </Setter.Value>
-            </Setter>
             <Setter Property="Button.Foreground" Value="#191970"/>
             <Setter Property="Button.Template">
                 <Setter.Value>
@@ -146,11 +140,7 @@
         </Style>
 
         <Style x:Key="DefaultGrid">
-            <Setter Property="Grid.Background">
-                <Setter.Value>
-                    <ImageBrush ImageSource="C:\Users\a6271\source\repos\SLIMessanger\SLIMessanger\Images\BackgroundGridImage.jpg"/>
-                </Setter.Value>
-            </Setter>
+
         </Style>
     </Window.Resources>
     <Grid>
@@ -380,6 +370,7 @@
                     
                     </TextBox>
                     <Button 
+                        Visibility="Hidden"
                         Style="{StaticResource SendMessageButton}"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"

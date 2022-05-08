@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tBL+lDGFu1fN8IHLWq5HSmxJw4i/scc441cY9/PtzfxacnqqLk2qju8gUd1/pLb5d0BMqENZbw8gBlEslJcnWQ==",
+  "dgSpecHash": "Q0zNsCYE4zrWw5OSwmVSf/IshKk24l6nbUu0SMJvyHrL4a39W9Q59x4e6r9oQ58X9RlMCZ6+gqpGnDJVirIXZA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\a6271\\source\\repos\\SLIMessanger\\SLIMessanger\\SLIMessanger.csproj",
+  "projectFilePath": "C:\\Users\\a6271\\OneDrive\\Рабочий стол\\Repositoies\\SLIMessanger\\SLIMessanger\\SLIMessanger\\SLIMessanger.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\a6271\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\a6271\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
